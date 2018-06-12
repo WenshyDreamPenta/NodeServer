@@ -1,12 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var page = require("../db/page");
-/* GET users listing. */
-router.get("/", function(req, res, next) {
-  res.send("respond with a resource");
-});
+var bodyParser = require('body-parser');
 
-router.get("/addPage", function(req, res, next) {
+router.post("/",function(req, res, next) {
   var reqJson = {
     name: req.query.name,
     alias: req.query.alias,
