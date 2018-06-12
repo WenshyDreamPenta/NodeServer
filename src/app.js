@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var pageRouter = require("./routes/page");
 
 var app = express();
 var bodyParser = require("body-parser");
@@ -21,17 +21,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/page", pageRouter);
 //app.use('/users/addPage', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Methods:POST,GET,OPTIONS,DELETE");
-  res.header( "Access-Control-Allow-Headers",  "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Credentials", "true");
+  console.log("INIT");     
+  
   next();
 });
 // error handler
@@ -42,6 +45,22 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+app.all('/', function(req, res, next) {
+  if (req.method === "OPTIONS") {
+    console.log("!OPTIONS");
+    var headers = {};
+    // IE8 does not allow domains to be specified, just the *
+    // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+    headers["Access-Control-Allow-Origin"] = "*";
+    headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+    headers["Access-Control-Allow-Credentials"] = false;
+    headers["Access-Control-Max-Age"] = "86400"; // 24 hours
+    headers["Access-Control-Allow-Headers"] =
+      "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+    res.writeHead(200, headers);
+    res.end();
+  }
 });
 
 module.exports = app;

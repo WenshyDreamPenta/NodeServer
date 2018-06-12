@@ -6,6 +6,7 @@ var modelName = "Pages";
 exports.addPage = function(obj) {
   var id = shortid.generate();
   var pid = shortid.generate();
+  var bid = shortid.generate();
   var resJson = {
     id: id,
     pid: pid,
@@ -13,7 +14,8 @@ exports.addPage = function(obj) {
     alias: obj.alias,
     status: "Y",
     type: obj.type,
-    url: obj.url
+    url: obj.url,
+    bid: bid
   };
   var res = db
     .get(modelName)
@@ -48,3 +50,11 @@ exports.querryPage = function(obj) {
     .value();
   return res;
 };
+//查询页面
+exports.querryAllPages = function() {
+  var res = [...db
+    .get(modelName)
+    .value()];
+  return res;
+};
+
