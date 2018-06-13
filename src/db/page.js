@@ -5,7 +5,7 @@ var modelName = "Pages";
 //添加新页面
 exports.add = function(obj) {
   var id = shortid.generate();
-  var bid = shortid.generate(); //画板id
+  var bid = shortid.generate(); //画板id  
   var resJson = {
     id: id,
     pid: obj.pid,
