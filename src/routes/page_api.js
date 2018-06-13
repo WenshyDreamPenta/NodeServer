@@ -1,7 +1,12 @@
+/**
+ * Page（新页面）相关
+ */
+
 var express = require("express");
 var router = express.Router();
 var page = require("../db/page");
 var bodyParser = require("body-parser");
+
 //设置跨域访问
 router.all("*", function(req, res, next) {
 

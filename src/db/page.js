@@ -5,8 +5,8 @@ var modelName = "Pages";
 //添加新页面
 exports.addPage = function(obj) {
   var id = shortid.generate();
-  var pid = shortid.generate();
-  var bid = shortid.generate();
+  var pid = shortid.generate();//页面ID
+  var bid = shortid.generate();//画板id
   var resJson = {
     id: id,
     pid: pid,
