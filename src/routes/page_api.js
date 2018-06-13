@@ -1,7 +1,6 @@
 /**
  * Page（新页面）相关
  */
-
 var express = require("express");
 var router = express.Router();
 var page = require("../db/page");
@@ -32,12 +31,20 @@ router.post("/addPage", function(req, res, next) {
   res.end(JSON.stringify(response));
 });
 
+/**
+ * GET方法
+ * 获取所有新页面
+ */
 router.get("/queryAll", function(req, res, next) {
   var response = page.querryAllPages();
   console.log(response);
   res.end(JSON.stringify(response));
 });
 
+/**
+ * POST方法
+ * 删除置顶pid页面
+ */
 router.post("/delPage", function(req, res, next) {
   var reqJson = {
     pid: req.body.pid
