@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/index.js",
-    "dev": "node ./src/db/test.js "
+    "start": "node ./bin/index.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
