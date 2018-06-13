@@ -19,14 +19,15 @@ router.all("*", function(req, res, next) {
  * POST方法
  * 添加新页面
  */
-router.post("/addPage", function(req, res, next) {
+router.post("/add", function(req, res, next) {
   var reqJson = {
+    pid:req.body.pid,
     name: req.body.name,
     alias: req.body.alias,
     type: req.body.type,
     url: req.body.url
   };
-  var response = page.addPage(reqJson);
+  var response = page.add(reqJson);
   console.log(response);
   res.end(JSON.stringify(response));
 });
@@ -35,8 +36,8 @@ router.post("/addPage", function(req, res, next) {
  * GET方法
  * 获取所有新页面
  */
-router.get("/queryAll", function(req, res, next) {
-  var response = page.querryAllPages();
+router.post("/queryAll", function(req, res, next) {
+  var response = page.querryAll();
   console.log(response);
   res.end(JSON.stringify(response));
 });
@@ -45,11 +46,11 @@ router.get("/queryAll", function(req, res, next) {
  * POST方法
  * 删除置顶pid页面
  */
-router.post("/delPage", function(req, res, next) {
+router.post("/delete", function(req, res, next) {
   var reqJson = {
-    pid: req.body.pid
+    id: req.body.id
   };
-  var response = page.delPage(reqJson);
+  var response = page.delete(reqJson);
   console.log(response);
   res.end(JSON.stringify(response));
 });

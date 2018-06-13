@@ -6,26 +6,6 @@
   "Layouts": [],
   "Pages": [
     {
-      "id": "r1NWzfaxm",
-      "pid": "HylEWfzTeX",
-      "name": "11",
-      "alias": "1",
-      "status": "Y",
-      "type": "wb",
-      "url": "1",
-      "bid": "S1ZVWfzTgQ"
-    },
-    {
-      "id": "B1zA8JCgX",
-      "pid": "rklf08JCxX",
-      "name": "1",
-      "alias": "1",
-      "status": "Y",
-      "type": "3rd",
-      "url": "1",
-      "bid": "HJbMR8k0eQ"
-    },
-    {
       "id": "BJZ7vy0g7",
       "pid": "r1g-XDyAlQ",
       "name": "测试页面1",
@@ -54,6 +34,16 @@
       "type": "3rd",
       "url": "大",
       "bid": "r1Z50HxAlm"
+    },
+    {
+      "id": "SkAqWSAem",
+      "pid": "p1",
+      "name": "测试2",
+      "alias": "1",
+      "status": "Y",
+      "type": "wb",
+      "url": "1",
+      "bid": "rJgC9WSCl7"
     }
   ]
 }

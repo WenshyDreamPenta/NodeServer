@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //添加路由
 app.use("/", indexRouter);
-app.use("/page", pageRouter);
+app.use("/wbapi/page", pageRouter);
 //app.use('/users/addPage', usersRouter);
 
 // catch 404 and forward to error handler

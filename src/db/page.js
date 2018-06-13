@@ -3,13 +3,12 @@ const shortid = require("shortid");
 var modelName = "Pages";
 
 //添加新页面
-exports.addPage = function(obj) {
+exports.add = function(obj) {
   var id = shortid.generate();
-  var pid = shortid.generate(); //页面ID
   var bid = shortid.generate(); //画板id
   var resJson = {
     id: id,
-    pid: pid,
+    pid: obj.pid,
     name: obj.name,
     alias: obj.alias,
     status: "Y",
@@ -25,16 +24,16 @@ exports.addPage = function(obj) {
 };
 
 //删除页面
-exports.delPage = function(obj) {
+exports.delete = function(obj) {
   var res = db
     .get(modelName)
-    .remove({ pid: obj.pid })
+    .remove({ id: obj.id })
     .write();
   return res[0];
 };
 
 //删除所有页面
-exports.delPageAll = function() {
+exports.delPage = function() {
   var res = db
     .get(modelName)
     .remove({ pid: obj.pid })
@@ -43,7 +42,7 @@ exports.delPageAll = function() {
 };
 
 //查询页面
-exports.querryPage = function(obj) {
+exports.querry = function(obj) {
   var res = db
     .get(modelName)
     .filter({ pid: obj.pid })
@@ -52,7 +51,7 @@ exports.querryPage = function(obj) {
 };
 
 //查询所有页面
-exports.querryAllPages = function() {
+exports.querryAll = function() {
   var res = [...db.get(modelName).value()];
   return res;
 };
